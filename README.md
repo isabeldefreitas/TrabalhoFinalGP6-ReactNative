@@ -12,13 +12,17 @@ na disciplina.
 
 ## Autores
 
+- [@alexandre-vpacheco](https://github.com/alexandre-vpacheco)
+
 - [@Artoda](https://github.com/Artoda)
 
 - [@isabeldefreitas](https://github.com/isabeldefreitas)
 
-- [@alexandre-vpacheco](https://github.com/alexandre-vpacheco)
-
 - [@roberta2105](https://github.com/roberta2105)
+  
+- [@tamirys2506](https://github.com/tamirys2506)
+
+- [@yagob2](https://github.com/yagob2)
 
 
 
