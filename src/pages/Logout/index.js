@@ -13,11 +13,13 @@ const Logout = () => {
     navigation.navigate("Login");
   };
   return (
+    <>
     <View style={styles.container}>
       <TouchableOpacity onPress={() => handleLogOut()} style={styles.button}>
-        <Text>Text</Text>
+        <Text style={styles.titleStyle}>Deseja sair?</Text>
       </TouchableOpacity>
     </View>
+    </>
   );
 };
 
@@ -31,6 +33,10 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
   },
+  titleStyle:{
+    alignItems: 'center',
+  }
+
 });
 
 export default Logout;
