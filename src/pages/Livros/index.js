@@ -1,8 +1,14 @@
-import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 
 const SelectedLivro = ({ route }) => {
   const selectedLivroData = route.params;
-  console.log(selectedLivroData.nomeAutor);
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -16,6 +22,12 @@ const SelectedLivro = ({ route }) => {
           </Text>
           <Text>Autor: {selectedLivroData.autorDTO.nomeAutor}</Text>
           <Text>Editora: {selectedLivroData.editoraDTO.nomeEditora}</Text>
+          <TouchableOpacity>
+            <Text>Adicionar aos Favoritos</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Comprar</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>

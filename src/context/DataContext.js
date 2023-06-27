@@ -25,6 +25,7 @@ export const DataProvider = ({ children }) => {
       value={{
         dadosUsuario,
         armazenarDadosUsuario,
+        setDadosUsuario,
       }}
     >
       {children}

@@ -33,8 +33,8 @@ const SelectedEditora = ({ route }) => {
 
         navigation.navigate("Livro", livroObj);
       })
-      .catch((err) => {
-        console.log("erro na requsiição de livros: " + err);
+      .catch((error) => {
+        console.log("erro na requsiição de livros: " + error);
       });
   }
 
