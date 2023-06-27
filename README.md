@@ -1,7 +1,5 @@
 # TrabalhoFinalGP6_ReactNative - Serratec 2023.1
 
-## Aplicativo Mobile de E-commerce de livros.
-
 O trabalho final da disciplina de Desenvolvimento Mobile foi promover um
 pequeno aplicativo de E-commerce de livros utilizando os tópicos apresentados e desenvolvidos
 na disciplina.
