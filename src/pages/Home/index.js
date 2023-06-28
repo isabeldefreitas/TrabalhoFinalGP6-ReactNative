@@ -142,7 +142,7 @@ const Home = () => {
           />
           <Text style={styles.destaque}>Box Completo Trono de vidro!</Text>
         </View>
-      </ScrollView>
+      </ScrollView> 
     </View>
   );
 };
