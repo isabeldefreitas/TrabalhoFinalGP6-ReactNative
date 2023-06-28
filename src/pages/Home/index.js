@@ -12,19 +12,18 @@ import AxiosInstance from "../../api/AxiosInstance";
 import { DataContext } from "../../context/DataContext";
 import { useContext, useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { save, delLivro, getValueFor } from "../../services/DataService";
+import { Loader } from "../Loader";
 
 const Home = () => {
   const { dadosUsuario } = useContext(DataContext);
   const [dadosEditora, setDadosEditora] = useState([]);
   const [dadosLivro, setDadosLivro] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [dadosLivrosBD, setDadosLivrosBD] = useState();
   const navigation = useNavigation();
 
   const getContent = () => {
     if (isLoading) {
-      return <ActivityIndicator style={styles.loading} size="large" />;
+      return <Loader />;
     }
   };
 
@@ -45,18 +44,12 @@ const Home = () => {
     </TouchableOpacity>
   );
 
-  const saveLivro = async (key, value) => {
-    await save(key, value);
-    setDadosLivrosBD(await getValueFor("livro"));
-  };
-
   const Livro = ({ item }) => (
     <TouchableOpacity
       activeOpacity={0.5}
       style={styles.categorieContainer}
       onPress={() => {
         navigation.navigate("Livro", item);
-        // saveLivro("livro", item.img);
       }}
     >
       <View style={styles.bookContainer}>
@@ -100,20 +93,16 @@ const Home = () => {
   };
 
   useEffect(() => {
-    getTodasEditoras();
     getTodosLivros();
+    getTodasEditoras();
   }, []);
 
   return (
     <View style={styles.container}>
-      {getContent()}
       <ScrollView>
         <Text style={styles.editorasTitle}>Editoras:</Text>
-        {/* <TouchableOpacity onPress={() => delLivro("livro")}>
-          <Text>Deletar Livros</Text>
-        </TouchableOpacity>
-        <Text>{JSON.stringify(dadosLivrosBD)}</Text> */}
 
+        {getContent()}
         <FlatList
           style={styles.flatList}
           data={dadosEditora}
@@ -124,6 +113,7 @@ const Home = () => {
         />
 
         <Text style={styles.editorasTitle}>Livros:</Text>
+        {getContent()}
         <FlatList
           style={styles.flatList}
           data={dadosLivro}
@@ -142,7 +132,7 @@ const Home = () => {
           />
           <Text style={styles.destaque}>Box Completo Trono de vidro!</Text>
         </View>
-      </ScrollView> 
+      </ScrollView>
     </View>
   );
 };

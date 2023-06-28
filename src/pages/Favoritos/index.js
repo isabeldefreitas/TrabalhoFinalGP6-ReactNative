@@ -1,23 +1,20 @@
-import { useFocusEffect } from "@react-navigation/native";
-import React, { useContext, useState } from "react";
 import {
-  FlatList,
+  View,
+  TouchableOpacity,
   StyleSheet,
   Text,
-  TouchableOpacity,
-  View,
+  FlatList,
+  Image,
 } from "react-native";
-import AxiosInstance from "../../api/AxiosInstance";
+import { save, getValueFor, delLivro } from "../../services/DataService";
 import { DataContext } from "../../context/DataContext";
-import {
-  getValueFor,
-  save,
-  delLivro,
-  getItemCount,
-} from "../../services/DataService";
+import AxiosInstance from "../../api/AxiosInstance";
+import { useState, useContext } from "react";
+import { useFocusEffect } from "@react-navigation/native";
+import React from "react";
 import { Loader } from "../Loader";
 
-const ShopCart = () => {
+const Favorites = () => {
   const { dadosUsuario } = useContext(DataContext);
   const [dadosLivro, setDadosLivro] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -35,20 +32,20 @@ const ShopCart = () => {
   };
 
   const getTodosLivros = async () => {
-    const buyesx = await getValueFor("livrosBuy");
-    const buyParse = buyesx == null ? [] : JSON.parse(buyesx);
+    const favoritoesx = await getValueFor("livros");
+    const favoritosParse = favoritoesx == null ? [] : JSON.parse(favoritoesx);
 
-    const livrosBuy = [];
+    const livrosFev = [];
 
-    for (const id of buyParse) {
+    for (const id of favoritosParse) {
       const resultado = await AxiosInstance.get(`/livros/${id}`, {
         headers: { Authorization: `Bearer ${dadosUsuario?.token}` },
       });
       setIsLoading(false);
-      livrosBuy.push(resultado.data);
+      livrosFev.push(resultado.data);
     }
 
-    setDadosLivro(livrosBuy);
+    setDadosLivro(livrosFev);
   };
 
   const deleteLivro = async (key, value) => {
@@ -58,30 +55,35 @@ const ShopCart = () => {
   return (
     <View style={styles.container}>
       {dadosLivro.length === 0 ? (
-        <Text>Nenhum item Adicionado ao carrinho</Text>
+        <Text>Nenhum Livro Adicionado aos Favoritos</Text>
       ) : (
-        <View>
-          <Text>Carrinho</Text>
+        <View style={styles.realContainer}>
+          <Text style={styles.title}>Favoritos:</Text>
           {getContent()}
           <FlatList
             data={dadosLivro}
             keyExtractor={(item) => item.codigoLivro}
             renderItem={({ item }) => (
-              <View>
+              <View style={styles.flatList}>
                 <Text>{item.nomeLivro}</Text>
+                <Image
+                  style={styles.livroImagem}
+                  source={{ uri: `data:image/png;base64,${item.img}` }}
+                />
                 <TouchableOpacity
+                  style={styles.botao}
                   onPress={() => {
-                    deleteLivro("livrosBuy", item.codigoLivro);
+                    deleteLivro("livros", item.codigoLivro);
                   }}
                 >
-                  <Text>Deletar do Carrinho</Text>
+                  <Text>Deletar dos Favoritos</Text>
                 </TouchableOpacity>
               </View>
             )}
           />
           <TouchableOpacity
             onPress={() => {
-              delLivro("livrosBuy");
+              delLivro("livros");
             }}
           >
             <Text>DELETAR TUDO</Text>
@@ -96,13 +98,34 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "pink",
+    alignItems: "center",
   },
 
-  titleStyle: {
-    fontSize: 20,
-    marginTop: 200,
-    marginLeft: 140,
+  realContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  flatList: {
+    alignItems: "center",
+    gap: 10,
+  },
+
+  botao: {
+    marginBottom: 10,
+  },
+
+  title: {
+    marginTop: 5,
+    marginBottom: 5,
+    fontWeight: "bold",
+    fontSize: 30,
+  },
+
+  livroImagem: {
+    width: 100,
+    height: 150,
   },
 });
 
-export default ShopCart;
+export default Favorites;

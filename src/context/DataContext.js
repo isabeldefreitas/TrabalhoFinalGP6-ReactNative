@@ -5,6 +5,7 @@ export const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
   const [dadosUsuario, setDadosUsuario] = useState("");
+  const [dadosLivro, setDadosLivro] = useState("");
 
   const armazenarDadosUsuario = (jwt) => {
     var jwtDecodificado = jwt_decode(jwt);
@@ -20,12 +21,22 @@ export const DataProvider = ({ children }) => {
     });
   };
 
+  const armazenarDadosLivro = () => {
+    setDadosLivro({
+      id: livros?.codigoLivro,
+      nome: livros?.nomeLivros,
+      imagem: livros?.img,
+    });
+  };
+
   return (
     <DataContext.Provider
       value={{
         dadosUsuario,
         armazenarDadosUsuario,
         setDadosUsuario,
+        dadosLivro,
+        armazenarDadosLivro,
       }}
     >
       {children}
