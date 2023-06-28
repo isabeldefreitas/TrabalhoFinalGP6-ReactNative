@@ -64,18 +64,16 @@ const Editoras = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <View style={styles.EditorasContainer}>
-          {getContent()}
-          <FlatList
-            style={styles.flatList}
-            data={dadosEditora}
-            showsHorizontalScrollIndicator={false}
-            renderItem={({ item }) => <Editora item={item} />}
-            keyExtractor={(item) => item.codigoEditora}
-          />
-        </View>
-      </ScrollView>
+      <View style={styles.EditorasContainer}>
+        {getContent()}
+        <FlatList
+          style={styles.flatList}
+          data={dadosEditora}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item }) => <Editora item={item} />}
+          keyExtractor={(item) => item.codigoEditora}
+        />
+      </View>
     </View>
   );
 };

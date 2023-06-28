@@ -14,16 +14,16 @@ const Logout = () => {
   };
   return (
     <>
-    <View style={styles.container}>
-  
+      <View style={styles.container}>
         <Text style={styles.titleStyle}>Deseja sair?</Text>
 
-        <TouchableOpacity style={styles.yesStyle} onPress={() => handleLogOut()}>
-        <Text>Sim</Text>
-      </TouchableOpacity>
-
-      
-    </View>
+        <TouchableOpacity
+          style={styles.yesStyle}
+          onPress={() => handleLogOut()}
+        >
+          <Text>Sim</Text>
+        </TouchableOpacity>
+      </View>
     </>
   );
 };
@@ -32,6 +32,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "pink",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   button: {
@@ -39,24 +41,19 @@ const styles = StyleSheet.create({
     height: 200,
   },
 
-  titleStyle:{
+  titleStyle: {
     fontSize: 20,
-    marginTop: 200,
-    marginLeft: 140,
   },
 
-  yesStyle:{
+  yesStyle: {
     fontSize: 20,
     alignItems: "center",
     backgroundColor: "white",
     padding: 10,
-    justifyContent: "center",
     width: 150,
     borderRadius: 5,
     marginTop: 20,
-    marginLeft: 120,
   },
-
 });
 
 export default Logout;
