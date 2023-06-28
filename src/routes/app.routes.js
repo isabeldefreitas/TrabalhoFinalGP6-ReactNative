@@ -40,7 +40,15 @@ function BottomNavigation() {
           ),
         }}
       />
-      <Tab.Screen name="Favoritos" component={Favorites} />
+      <Tab.Screen
+        name="Favoritos"
+        component={Favorites}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="star" color={color} size={size} />
+          ),
+        }}
+      />
       <Tab.Screen
         name="Carrinho"
         component={ShopCart}
@@ -85,7 +93,7 @@ export function AppRoutes() {
           />
           <Stack.Screen
             options={{ headerLeft: null }}
-            name="Home"
+            name="Livraria"
             component={BottomNavigation}
           />
           <Stack.Screen name="Livro" component={SelectedLivro} />

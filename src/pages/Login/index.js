@@ -32,12 +32,12 @@ const Login = ({ navigation }) => {
       if (resultado.status === 200) {
         var jwtToken = resultado.data;
         armazenarDadosUsuario(jwtToken["accessToken"]);
-       <Loader style={styles.styleLoader}/>
-        navigation.navigate("Home");
+        <Loader style={styles.styleLoader} />;
+        navigation.navigate("Livraria");
       } else {
       }
     } catch (error) {
-      setError("Por favor, verifique as informações fornecidas!"  +error);
+      setError("Por favor, verifique as informações fornecidas!" + error);
     }
   };
 
@@ -137,9 +137,9 @@ const styles = StyleSheet.create({
     color: "red",
   },
 
-  styleLoader:{
-    alignItems:'bottom',
-  }
+  styleLoader: {
+    alignItems: "bottom",
+  },
 });
 
 export default Login;

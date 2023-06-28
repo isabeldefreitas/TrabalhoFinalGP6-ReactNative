@@ -14,6 +14,7 @@ import {
   save,
   delLivro,
   getItemCount,
+  deleteItem,
 } from "../../services/DataService";
 import { Loader } from "../Loader";
 
@@ -25,7 +26,7 @@ const ShopCart = () => {
   useFocusEffect(
     React.useCallback(() => {
       getTodosLivros();
-    })
+    }, [])
   );
 
   const getContent = () => {
@@ -44,15 +45,16 @@ const ShopCart = () => {
       const resultado = await AxiosInstance.get(`/livros/${id}`, {
         headers: { Authorization: `Bearer ${dadosUsuario?.token}` },
       });
-      setIsLoading(false);
       livrosBuy.push(resultado.data);
     }
+    setIsLoading(false);
 
     setDadosLivro(livrosBuy);
   };
 
   const deleteLivro = async (key, value) => {
-    await save(key, value);
+    await deleteItem(key, value);
+    getTodosLivros();
   };
 
   return (
