@@ -47,10 +47,10 @@ const Login = ({ navigation }) => {
       <Image
         style={styles.logo}
         source={{
-          uri: "https://images-ext-2.discordapp.net/external/niv4wChJYjYIWY1bQzLMuIv-dBq-CtS24o3pgEYxzT8/https/upload.wikimedia.org/wikipedia/commons/thumb/7/77/Letter_x.svg/569px-Letter_x.svg.png?width=503&height=905",
+          uri: "https://media.discordapp.net/attachments/1081311975247716473/1123705326433218670/image.png?width=671&height=671",
         }}
       />
-      <Text style={styles.titleX}>Livraria X</Text>
+
       <Text style={styles.title}>Bem-Vinde</Text>
       <TextInput
         style={styles.input}
@@ -85,27 +85,20 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "pink",
+    backgroundColor: "#4d2624",
     alignItems: "center",
     justifyContent: "center",
   },
 
-  titleX: {
-    color: "purple",
-    fontSize: 40,
-    fontWeight: "bold",
-  },
-
   logo: {
-    width: 100,
-    height: 100,
+    width: 250,
+    height: 250,
   },
 
   title: {
-    color: "purple",
+    color: "#794a33",
     fontSize: 25,
     fontWeight: "bold",
-    marginTop: 30,
   },
 
   input: {

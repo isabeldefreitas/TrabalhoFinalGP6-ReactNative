@@ -140,7 +140,7 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "pink",
+    backgroundColor: "#4d2624",
   },
 
   loading: {
@@ -148,30 +148,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  header: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    width: "100%",
-    backgroundColor: "#FFA6C9",
-  },
-
-  menu: {
-    marginLeft: 15,
-    width: 35,
-    height: 35,
-  },
-
   flatList: {
     flexGrow: 0,
-  },
-
-  title: {
-    padding: 20,
-    fontSize: 30,
-    fontWeight: "bold",
-    color: "magenta",
   },
 
   categorieContainer: {
@@ -182,12 +160,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     marginTop: 5,
-    color: "black",
+    color: "#794a33",
     marginLeft: 10,
   },
 
   categorie: {
-    backgroundColor: "purple",
     borderRadius: 5,
     padding: 30,
     width: 130,
@@ -195,9 +172,9 @@ const styles = StyleSheet.create({
   },
 
   bookContainer: {
-    height: 320,
-    width: 220,
-    backgroundColor: "white",
+    height: 305,
+    width: 225,
+    backgroundColor: "#161212",
     alignItems: "center",
     borderRadius: 10,
   },
