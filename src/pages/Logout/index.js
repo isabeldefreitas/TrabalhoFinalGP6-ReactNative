@@ -21,7 +21,7 @@ const Logout = () => {
           style={styles.yesStyle}
           onPress={() => handleLogOut()}
         >
-          <Text>Sim</Text>
+          <Text style={styles.text}>Sim</Text>
         </TouchableOpacity>
       </View>
     </>
@@ -31,7 +31,7 @@ const Logout = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "pink",
+    backgroundColor: "#4d2624",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -42,17 +42,23 @@ const styles = StyleSheet.create({
   },
 
   titleStyle: {
+    color: "#794a33",
     fontSize: 20,
   },
 
   yesStyle: {
     fontSize: 20,
     alignItems: "center",
-    backgroundColor: "white",
+    backgroundColor: "#161212",
     padding: 10,
     width: 150,
     borderRadius: 5,
     marginTop: 20,
+  },
+
+  text: {
+    fontWeight: "bold",
+    color: "#794a33",
   },
 });
 

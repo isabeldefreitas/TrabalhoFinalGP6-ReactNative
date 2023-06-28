@@ -69,6 +69,7 @@ const Editoras = () => {
         <FlatList
           style={styles.flatList}
           data={dadosEditora}
+          showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => <Editora item={item} />}
           keyExtractor={(item) => item.codigoEditora}
@@ -81,7 +82,7 @@ const Editoras = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "pink",
+    backgroundColor: "#4d2624",
   },
 
   loading: {
@@ -98,19 +99,11 @@ const styles = StyleSheet.create({
     flexGrow: 0,
   },
 
-  title: {
-    padding: 20,
-    fontSize: 30,
-    fontWeight: "bold",
-    color: "magenta",
-  },
-
   categorieContainer: {
     padding: 10,
   },
 
   categorie: {
-    backgroundColor: "purple",
     borderRadius: 5,
     padding: 30,
     width: 130,

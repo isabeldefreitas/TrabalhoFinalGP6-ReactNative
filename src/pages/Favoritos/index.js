@@ -6,7 +6,12 @@ import {
   FlatList,
   Image,
 } from "react-native";
-import { save, getValueFor, delLivro } from "../../services/DataService";
+import {
+  save,
+  getValueFor,
+  delLivro,
+  deleteItem,
+} from "../../services/DataService";
 import { DataContext } from "../../context/DataContext";
 import AxiosInstance from "../../api/AxiosInstance";
 import { useState, useContext } from "react";
@@ -22,7 +27,7 @@ const Favorites = () => {
   useFocusEffect(
     React.useCallback(() => {
       getTodosLivros();
-    })
+    }, [])
   );
 
   const getContent = () => {
@@ -41,15 +46,16 @@ const Favorites = () => {
       const resultado = await AxiosInstance.get(`/livros/${id}`, {
         headers: { Authorization: `Bearer ${dadosUsuario?.token}` },
       });
-      setIsLoading(false);
       livrosFev.push(resultado.data);
     }
+    setIsLoading(false);
 
     setDadosLivro(livrosFev);
   };
 
   const deleteLivro = async (key, value) => {
-    await save(key, value);
+    await deleteItem(key, value);
+    getTodosLivros();
   };
 
   return (

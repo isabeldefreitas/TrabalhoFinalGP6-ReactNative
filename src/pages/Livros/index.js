@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { save } from "../../services/DataService";
+import { save, addItem } from "../../services/DataService";
+import { Feather } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import {
   Image,
@@ -13,27 +15,13 @@ import {
 
 const SelectedLivro = ({ route }) => {
   const selectedLivroData = route.params;
-  const [isPressFav, setIsPressFav] = useState(false);
-  const [isPressShop, setIsPressShop] = useState(false);
-  const [buttonTextFav, setButtonTextFav] = useState(false);
-  const [buttonTextShop, setButtonTextShop] = useState(false);
 
   const saveLivro = async (key, value) => {
-    await save(key, value);
+    await addItem(key, value);
   };
 
   const saveLivroBuy = async (key, value) => {
-    await save(key, value);
-  };
-
-  const handleClickFav = () => {
-    setIsPressFav(!isPressFav);
-    setButtonTextFav(!buttonTextFav);
-  };
-
-  const handleClickShop = () => {
-    setIsPressShop(!isPressShop);
-    setButtonTextShop(!buttonTextShop);
+    await addItem(key, value);
   };
 
   return (
@@ -49,32 +37,24 @@ const SelectedLivro = ({ route }) => {
           </Text>
           <Text>Autor: {selectedLivroData.autorDTO.nomeAutor}</Text>
           <Text>Editora: {selectedLivroData.editoraDTO.nomeEditora}</Text>
-          <TouchableOpacity
-            style={isPressFav ? styles.btnPress : styles.btnNormal}
-            onPress={() => {
-              saveLivro("livros", selectedLivroData.codigoLivro);
-              handleClickFav();
-            }}
-          >
-            <Text>
-              {buttonTextFav
-                ? "Adicionado aos Favoritos"
-                : "Adicionar aos Favoritos"}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={isPressShop ? styles.btnPress : styles.btnNormal}
-            onPress={() => {
-              saveLivroBuy("livrosBuy", selectedLivroData.codigoLivro);
-              handleClickShop();
-            }}
-          >
-            <Text>
-              {buttonTextShop
-                ? "Adicionado ao Carrinho"
-                : "Adicionar ao Carrinho"}
-            </Text>
-          </TouchableOpacity>
+          <View style={styles.botaoContainer}>
+            <TouchableOpacity
+              style={styles.botao}
+              onPress={() => {
+                saveLivro("livros", selectedLivroData.codigoLivro);
+              }}
+            >
+              <Feather name="star" size={40} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.botao}
+              onPress={() => {
+                saveLivroBuy("livrosBuy", selectedLivroData.codigoLivro);
+              }}
+            >
+              <MaterialIcons name="add-shopping-cart" size={40} color="black" />
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -84,7 +64,7 @@ const SelectedLivro = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "pink",
+    backgroundColor: "#4d2624",
   },
 
   bookContainer: {
@@ -102,18 +82,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  btnNormal: {
-    borderWidth: 1,
-    borderRadius: 10,
-    height: 30,
-    width: 100,
+  botaoContainer: {
+    flexDirection: "row",
+    gap: 10,
   },
-  btnPress: {
-    backgroundColor: "red",
-    borderWidth: 1,
+
+  botao: {
+    backgroundColor: "#161212",
+    padding: 10,
     borderRadius: 10,
-    height: 30,
-    width: 100,
   },
 });
 
