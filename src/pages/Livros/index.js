@@ -1,3 +1,7 @@
+import { DataContext } from "../../context/DataContext";
+import { save, delLivro, getValueFor } from "../../services/DataService";
+import { useContext, useState, useEffect } from "react";
+
 import {
   View,
   Text,
@@ -9,6 +13,15 @@ import {
 
 const SelectedLivro = ({ route }) => {
   const selectedLivroData = route.params;
+
+  const saveLivro = async (key, value) => {
+    await save(key, value);
+  };
+
+  const saveLivroBuy = async (key, value) => {
+    await save(key, value);
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -22,10 +35,18 @@ const SelectedLivro = ({ route }) => {
           </Text>
           <Text>Autor: {selectedLivroData.autorDTO.nomeAutor}</Text>
           <Text>Editora: {selectedLivroData.editoraDTO.nomeEditora}</Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              saveLivro("livros", selectedLivroData.codigoLivro);
+            }}
+          >
             <Text>Adicionar aos Favoritos</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              saveLivroBuy("livrosBuy", selectedLivroData.codigoLivro);
+            }}
+          >
             <Text>Comprar</Text>
           </TouchableOpacity>
         </View>

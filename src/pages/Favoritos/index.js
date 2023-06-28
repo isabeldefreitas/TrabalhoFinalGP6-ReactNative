@@ -5,14 +5,14 @@ import {
   Text,
   FlatList,
 } from "react-native";
-import { save, getValueFor, delLivro } from "../../services/DataService";
+import { save, getValueFor } from "../../services/DataService";
 import { DataContext } from "../../context/DataContext";
 import AxiosInstance from "../../api/AxiosInstance";
 import { useState, useContext } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 import React from "react";
 
-const ShopCart = () => {
+const Favorites = () => {
   const { dadosUsuario } = useContext(DataContext);
   const [dadosLivro, setDadosLivro] = useState([]);
 
@@ -23,19 +23,19 @@ const ShopCart = () => {
   );
 
   const getTodosLivros = async () => {
-    const buyesx = await getValueFor("livrosBuy");
-    const buyParse = buyesx == null ? [] : JSON.parse(buyesx);
+    const favoritoesx = await getValueFor("livros");
+    const favoritosParse = favoritoesx == null ? [] : JSON.parse(favoritoesx);
 
-    const livrosBuy = [];
+    const livrosFev = [];
 
-    for (const id of buyParse) {
+    for (const id of favoritosParse) {
       const resultado = await AxiosInstance.get(`/livros/${id}`, {
         headers: { Authorization: `Bearer ${dadosUsuario?.token}` },
       });
-      livrosBuy.push(resultado.data);
+      livrosFev.push(resultado.data);
     }
 
-    setDadosLivro(livrosBuy);
+    setDadosLivro(livrosFev);
   };
 
   const deleteLivro = async (key, value) => {
@@ -44,7 +44,7 @@ const ShopCart = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Carrinho</Text>
+      <Text>Favoritos</Text>
       <FlatList
         data={dadosLivro}
         keyExtractor={(item) => item.codigoLivro}
@@ -53,10 +53,10 @@ const ShopCart = () => {
             <Text>{item.nomeLivro}</Text>
             <TouchableOpacity
               onPress={() => {
-                deleteLivro("livrosBuy", item.codigoLivro);
+                deleteLivro("livros", item.codigoLivro);
               }}
             >
-              <Text>Deletar do Carrinho</Text>
+              <Text>Deletar dos Favoritos</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -70,12 +70,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "pink",
   },
-
-  titleStyle: {
-    fontSize: 20,
-    marginTop: 200,
-    marginLeft: 140,
-  },
 });
 
-export default ShopCart;
+export default Favorites;

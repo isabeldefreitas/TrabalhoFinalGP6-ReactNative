@@ -65,7 +65,7 @@ const Editoras = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <View>
+        <View style={styles.EditorasContainer}>
           {getContent()}
           <FlatList
             style={styles.flatList}
@@ -89,6 +89,11 @@ const styles = StyleSheet.create({
   loading: {
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  EditorasContainer: {
+    flex: 1,
+    alignItems: "center",
   },
 
   flatList: {

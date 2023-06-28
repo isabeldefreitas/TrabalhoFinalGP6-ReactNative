@@ -4,11 +4,14 @@ async function save(key, value) {
   try {
     let storedValue = await getValueFor(key);
     let existingData = storedValue ? JSON.parse(storedValue) : [];
+
     if (existingData.includes(value)) {
-      return;
+      let newData = existingData.filter((item) => item !== value);
+      await SecureStore.setItemAsync(key, JSON.stringify(newData));
+    } else {
+      let newData = [...existingData, value];
+      await SecureStore.setItemAsync(key, JSON.stringify(newData));
     }
-    let newData = [...existingData, value];
-    await SecureStore.setItemAsync(key, JSON.stringify(newData));
   } catch (error) {
     console.log("Erro ao persistir dados:" + error);
   }
