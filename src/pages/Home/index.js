@@ -132,7 +132,7 @@ const Home = () => {
           renderItem={({ item }) => <Livro item={item} />}
           keyExtractor={(item) => item.codigoLivro}
         />
-        <View style={styles.detaqueContainer}>
+        <View style={styles.destaqueContainer}>
           <Text style={styles.editorasTitle}>Destaques:</Text>
           <Image
             style={styles.destaques}
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     marginTop: 5,
-    color: "magenta",
+    color: "black",
     marginLeft: 10,
   },
 
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  detaqueContainer: {
+  destaqueContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
