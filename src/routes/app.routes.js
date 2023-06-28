@@ -12,6 +12,7 @@ import Editoras from "../pages/EditorasPage";
 import SelectedLivro from "../pages/Livros";
 import SelectedEditora from "../pages/Editoras";
 import ShopCart from "../pages/Shop";
+import {Feather} from '@expo/vector-icons'
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -19,11 +20,11 @@ const Tab = createBottomTabNavigator();
 function BottomNavigation() {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Livraria" component={Home} />
-      <Tab.Screen name="Editoras" component={Editoras} />
+      <Tab.Screen name="Início" component={Home} options={{tabBarIcon: ({color, size}) => <Feather name ="home" color={color} size={size}/>}}/>
+      <Tab.Screen name="Editoras" component={Editoras} options={{tabBarIcon: ({color, size}) => <Feather name ="book" color={color} size={size}/>}}/>
       {/* <Tab.Screen name="Favoritos" component={Favorites}/> */}
-      <Tab.Screen name="Carrinho" component={ShopCart} />
-      <Tab.Screen name="Logout" component={Logout} />
+      <Tab.Screen name="Carrinho" component={ShopCart} options={{tabBarIcon: ({color, size}) => <Feather name ="shopping-cart" color={color} size={size}/>}}/>
+      <Tab.Screen name="Logout" component={Logout} options={{tabBarIcon: ({color, size}) => <Feather name ="log-out" color={color} size={size}/>}}/>
     </Tab.Navigator>
   );
 }

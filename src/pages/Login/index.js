@@ -32,12 +32,12 @@ const Login = ({ navigation }) => {
       if (resultado.status === 200) {
         var jwtToken = resultado.data;
         armazenarDadosUsuario(jwtToken["accessToken"]);
-        <Loader style={styles.styleLoader}/>
+       <Loader style={styles.styleLoader}/>
         navigation.navigate("Home");
       } else {
       }
     } catch (error) {
-      setError("Por favor, verifique as informações fornecidas!");
+      setError("Por favor, verifique as informações fornecidas!"  +error);
     }
   };
 

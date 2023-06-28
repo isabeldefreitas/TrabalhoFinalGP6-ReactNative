@@ -15,9 +15,14 @@ const Logout = () => {
   return (
     <>
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => handleLogOut()} style={styles.button}>
+  
         <Text style={styles.titleStyle}>Deseja sair?</Text>
+
+        <TouchableOpacity style={styles.yesStyle} onPress={() => handleLogOut()}>
+        <Text>Sim</Text>
       </TouchableOpacity>
+
+      
     </View>
     </>
   );
@@ -33,9 +38,24 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
   },
+
   titleStyle:{
-    alignItems: 'center',
-  }
+    fontSize: 20,
+    marginTop: 200,
+    marginLeft: 140,
+  },
+
+  yesStyle:{
+    fontSize: 20,
+    alignItems: "center",
+    backgroundColor: "white",
+    padding: 10,
+    justifyContent: "center",
+    width: 150,
+    borderRadius: 5,
+    marginTop: 20,
+    marginLeft: 120,
+  },
 
 });
 
