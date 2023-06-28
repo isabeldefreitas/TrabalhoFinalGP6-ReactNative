@@ -37,7 +37,7 @@ const Login = ({ navigation }) => {
       } else {
       }
     } catch (error) {
-      setError("Por favor verifique as informações fornecidas");
+      setError("Por favor, verifique as informações fornecidas!");
     }
   };
 
@@ -54,7 +54,7 @@ const Login = ({ navigation }) => {
       <Text style={styles.title}>Bem-Vinde</Text>
       <TextInput
         style={styles.input}
-        placeholder="E-mail"
+        placeholder="Usuário"
         onChangeText={setEmail}
         value={email}
       ></TextInput>

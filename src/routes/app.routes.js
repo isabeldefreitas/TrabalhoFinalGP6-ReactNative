@@ -23,7 +23,7 @@ function BottomNavigation() {
       <Tab.Screen name="Editoras" component={Editoras} />
       {/* <Tab.Screen name="Favoritos" component={Favorites}/> */}
       <Tab.Screen name="Carrinho" component={ShopCart} />
-      <Tab.Screen name="Deslogar" component={Logout} />
+      <Tab.Screen name="Logout" component={Logout} />
     </Tab.Navigator>
   );
 }
