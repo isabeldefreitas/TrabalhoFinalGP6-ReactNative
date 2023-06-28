@@ -13,6 +13,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AxiosInstance from "../../api/AxiosInstance";
 import { DataContext } from "../../context/DataContext";
 import { useTogglePasswordVisibility } from "../../hook/useTogglePasswordVisibility";
+import { Loader } from "../Loader/index";
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -31,7 +32,7 @@ const Login = ({ navigation }) => {
       if (resultado.status === 200) {
         var jwtToken = resultado.data;
         armazenarDadosUsuario(jwtToken["accessToken"]);
-
+        <Loader style={styles.styleLoader}/>
         navigation.navigate("Home");
       } else {
       }
@@ -135,6 +136,10 @@ const styles = StyleSheet.create({
   error: {
     color: "red",
   },
+
+  styleLoader:{
+    alignItems:'bottom',
+  }
 });
 
 export default Login;
