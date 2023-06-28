@@ -1,26 +1,38 @@
+import { useFocusEffect } from "@react-navigation/native";
+import React, { useContext, useState } from "react";
 import {
-  View,
-  TouchableOpacity,
+  FlatList,
   StyleSheet,
   Text,
-  FlatList,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { save, getValueFor, delLivro } from "../../services/DataService";
-import { DataContext } from "../../context/DataContext";
 import AxiosInstance from "../../api/AxiosInstance";
-import { useState, useContext } from "react";
-import { useFocusEffect } from "@react-navigation/native";
-import React from "react";
+import { DataContext } from "../../context/DataContext";
+import {
+  getValueFor,
+  save,
+  delLivro,
+  getItemCount,
+} from "../../services/DataService";
+import { Loader } from "../Loader";
 
 const ShopCart = () => {
   const { dadosUsuario } = useContext(DataContext);
   const [dadosLivro, setDadosLivro] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useFocusEffect(
     React.useCallback(() => {
       getTodosLivros();
     })
   );
+
+  const getContent = () => {
+    if (isLoading) {
+      return <Loader />;
+    }
+  };
 
   const getTodosLivros = async () => {
     const buyesx = await getValueFor("livrosBuy");
@@ -32,6 +44,7 @@ const ShopCart = () => {
       const resultado = await AxiosInstance.get(`/livros/${id}`, {
         headers: { Authorization: `Bearer ${dadosUsuario?.token}` },
       });
+      setIsLoading(false);
       livrosBuy.push(resultado.data);
     }
 
@@ -44,23 +57,37 @@ const ShopCart = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Carrinho</Text>
-      <FlatList
-        data={dadosLivro}
-        keyExtractor={(item) => item.codigoLivro}
-        renderItem={({ item }) => (
-          <View>
-            <Text>{item.nomeLivro}</Text>
-            <TouchableOpacity
-              onPress={() => {
-                deleteLivro("livrosBuy", item.codigoLivro);
-              }}
-            >
-              <Text>Deletar do Carrinho</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      />
+      {dadosLivro.length === 0 ? (
+        <Text>Nenhum item Adicionado ao carrinho</Text>
+      ) : (
+        <View>
+          <Text>Carrinho</Text>
+          {getContent()}
+          <FlatList
+            data={dadosLivro}
+            keyExtractor={(item) => item.codigoLivro}
+            renderItem={({ item }) => (
+              <View>
+                <Text>{item.nomeLivro}</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    deleteLivro("livrosBuy", item.codigoLivro);
+                  }}
+                >
+                  <Text>Deletar do Carrinho</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+          />
+          <TouchableOpacity
+            onPress={() => {
+              delLivro("livrosBuy");
+            }}
+          >
+            <Text>DELETAR TUDO</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };

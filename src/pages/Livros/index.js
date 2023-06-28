@@ -1,18 +1,22 @@
-import { DataContext } from "../../context/DataContext";
-import { save, delLivro, getValueFor } from "../../services/DataService";
-import { useContext, useState, useEffect } from "react";
+import { useState } from "react";
+import { save } from "../../services/DataService";
 
 import {
-  View,
-  Text,
   Image,
-  StyleSheet,
   ScrollView,
+  StyleSheet,
+  Text,
   TouchableOpacity,
+  View,
+  TouchableHighlight,
 } from "react-native";
 
 const SelectedLivro = ({ route }) => {
   const selectedLivroData = route.params;
+  const [isPressFav, setIsPressFav] = useState(false);
+  const [isPressShop, setIsPressShop] = useState(false);
+  const [buttonTextFav, setButtonTextFav] = useState(false);
+  const [buttonTextShop, setButtonTextShop] = useState(false);
 
   const saveLivro = async (key, value) => {
     await save(key, value);
@@ -20,6 +24,16 @@ const SelectedLivro = ({ route }) => {
 
   const saveLivroBuy = async (key, value) => {
     await save(key, value);
+  };
+
+  const handleClickFav = () => {
+    setIsPressFav(!isPressFav);
+    setButtonTextFav(!buttonTextFav);
+  };
+
+  const handleClickShop = () => {
+    setIsPressShop(!isPressShop);
+    setButtonTextShop(!buttonTextShop);
   };
 
   return (
@@ -36,18 +50,30 @@ const SelectedLivro = ({ route }) => {
           <Text>Autor: {selectedLivroData.autorDTO.nomeAutor}</Text>
           <Text>Editora: {selectedLivroData.editoraDTO.nomeEditora}</Text>
           <TouchableOpacity
+            style={isPressFav ? styles.btnPress : styles.btnNormal}
             onPress={() => {
               saveLivro("livros", selectedLivroData.codigoLivro);
+              handleClickFav();
             }}
           >
-            <Text>Adicionar aos Favoritos</Text>
+            <Text>
+              {buttonTextFav
+                ? "Adicionado aos Favoritos"
+                : "Adicionar aos Favoritos"}
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
+            style={isPressShop ? styles.btnPress : styles.btnNormal}
             onPress={() => {
               saveLivroBuy("livrosBuy", selectedLivroData.codigoLivro);
+              handleClickShop();
             }}
           >
-            <Text>Comprar</Text>
+            <Text>
+              {buttonTextShop
+                ? "Adicionado ao Carrinho"
+                : "Adicionar ao Carrinho"}
+            </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -74,6 +100,20 @@ const styles = StyleSheet.create({
   bookTitle: {
     fontSize: 20,
     fontWeight: "bold",
+  },
+
+  btnNormal: {
+    borderWidth: 1,
+    borderRadius: 10,
+    height: 30,
+    width: 100,
+  },
+  btnPress: {
+    backgroundColor: "red",
+    borderWidth: 1,
+    borderRadius: 10,
+    height: 30,
+    width: 100,
   },
 });
 

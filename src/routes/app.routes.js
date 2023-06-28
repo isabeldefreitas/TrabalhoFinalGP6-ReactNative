@@ -14,6 +14,7 @@ import SelectedEditora from "../pages/Editoras";
 import ShopCart from "../pages/Shop";
 import { Feather } from "@expo/vector-icons";
 import Favorites from "../pages/Favoritos";
+import { getItemCount } from "../services/DataService";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -50,7 +51,7 @@ function BottomNavigation() {
         }}
       />
       <Tab.Screen
-        name="Logout"
+        name="Sair"
         component={Logout}
         options={{
           tabBarIcon: ({ color, size }) => (

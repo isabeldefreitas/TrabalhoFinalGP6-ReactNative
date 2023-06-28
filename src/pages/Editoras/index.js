@@ -26,6 +26,7 @@ const SelectedEditora = ({ route }) => {
 
         const livroObj = {
           img: livroResponse.imagem,
+          codigoLivro: livroResponse.codigoLivro,
           nomeLivro: livroResponse.nomeLivro,
           autorDTO: livroResponse.autorDTO,
           editoraDTO: livroResponse.editoraDTO,

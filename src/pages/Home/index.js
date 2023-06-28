@@ -12,6 +12,7 @@ import AxiosInstance from "../../api/AxiosInstance";
 import { DataContext } from "../../context/DataContext";
 import { useContext, useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { Loader } from "../Loader";
 
 const Home = () => {
   const { dadosUsuario } = useContext(DataContext);
@@ -22,7 +23,7 @@ const Home = () => {
 
   const getContent = () => {
     if (isLoading) {
-      return <ActivityIndicator style={styles.loading} size="large" />;
+      return <Loader />;
     }
   };
 
@@ -131,7 +132,7 @@ const Home = () => {
           />
           <Text style={styles.destaque}>Box Completo Trono de vidro!</Text>
         </View>
-      </ScrollView> 
+      </ScrollView>
     </View>
   );
 };
