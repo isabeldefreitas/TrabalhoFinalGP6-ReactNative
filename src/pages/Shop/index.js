@@ -4,7 +4,7 @@ const ShopCart = () => {
   return (
     <>
       <View style={styles.container}>
-        <Text>Carrinho</Text>
+        <Text style={styles.titleStyle}>Carrinho</Text>
       </View>
     </>
   );
@@ -15,6 +15,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "pink",
   },
+
+  titleStyle: {
+    fontSize: 20,
+    marginTop: 200,
+    marginLeft: 140,
+  },
+
 });
 
 export default ShopCart;
