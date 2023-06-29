@@ -16,6 +16,27 @@ async function save(key, value) {
   }
 }
 
+async function addItem(key, value) {
+  try {
+    let storedValue = await getValueFor(key);
+    let existingData = storedValue ? JSON.parse(storedValue) : [];
+
+    if (!existingData.includes(value)) {
+      let newData = [...existingData, value];
+      await SecureStore.setItemAsync(key, JSON.stringify(newData));
+      console.log();
+    } else {
+      console.log("Item already exists:", value);
+      return;
+    }
+  } catch (error) {
+    console.log("Error adding item: " + error);
+  }
+  let itemCount = await getItemCount(key);
+  console.log("Number of items in SecureStore:", itemCount);
+  return itemCount;
+}
+
 async function deleteItem(key, value) {
   try {
     let storedValue = await getValueFor(key);
@@ -31,24 +52,16 @@ async function deleteItem(key, value) {
   return itemCount;
 }
 
-async function addItem(key, value) {
-  try {
-    let storedValue = await getValueFor(key);
-    let existingData = storedValue ? JSON.parse(storedValue) : [];
+async function getValueFor(key) {
+  let result = null;
 
-    if (!existingData.includes(value)) {
-      let newData = [...existingData, value];
-      await SecureStore.setItemAsync(key, JSON.stringify(newData));
-    } else {
-      console.log("Item already exists:", value);
-      return;
-    }
+  try {
+    result = await SecureStore.getItemAsync(key);
   } catch (error) {
-    console.log("Error adding item: " + error);
+    console.log("Erro ao recuperar dados:" + error);
   }
-  let itemCount = await getItemCount(key);
-  console.log("Number of items in SecureStore:", itemCount);
-  return itemCount;
+
+  return result;
 }
 
 async function getItemCount(key) {
@@ -60,18 +73,6 @@ async function getItemCount(key) {
     console.log("Error getting item count: " + error);
     return "0";
   }
-}
-
-async function getValueFor(key) {
-  let result = null;
-
-  try {
-    result = await SecureStore.getItemAsync(key);
-  } catch (error) {
-    console.log("Erro ao recuperar dados:" + error);
-  }
-
-  return result;
 }
 
 const delLivro = async (key) => {

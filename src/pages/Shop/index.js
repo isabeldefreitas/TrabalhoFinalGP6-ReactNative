@@ -59,6 +59,11 @@ const ShopCart = () => {
     getTodosLivros();
   };
 
+  const deleteTodosLivros = async (key) => {
+    await delLivro(key);
+    getTodosLivros();
+  };
+
   return (
     <View style={styles.container}>
       {dadosLivro.length === 0 ? (
@@ -173,6 +178,14 @@ const styles = StyleSheet.create({
 
   trashButton:{
     marginTop:10
+  },
+
+  finalizarCompra: {
+    backgroundColor: "#642402",
+    padding: 25,
+    marginBottom: 10,
+    marginTop: 10,
+    borderRadius: 5,
   },
 });
 

@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     textShadow: "0.0em 0.0em 0.5em black",
     fontSize: 30,
     fontWeight: "bold",
-    fontFamily: "Trebuchet MS, sans-serif",
     marginTop: 30,
   },
 

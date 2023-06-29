@@ -87,13 +87,6 @@ const Favorites = () => {
               </View>
             )}
           />
-          <TouchableOpacity
-            onPress={() => {
-              delLivro("livros");
-            }}
-          >
-            <Text>DELETAR TUDO</Text>
-          </TouchableOpacity>
         </View>
       )}
     </View>
