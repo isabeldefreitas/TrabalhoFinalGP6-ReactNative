@@ -24,6 +24,7 @@ async function addItem(key, value) {
     if (!existingData.includes(value)) {
       let newData = [...existingData, value];
       await SecureStore.setItemAsync(key, JSON.stringify(newData));
+      console.log();
     } else {
       console.log("Item already exists:", value);
       return;

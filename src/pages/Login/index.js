@@ -97,10 +97,8 @@ const styles = StyleSheet.create({
 
   title: {
     color: "#54C7FF",
-    textShadow: "0.0em 0.0em 0.1em black",
     fontSize: 30,
     fontWeight: "bold",
-    fontFamily: "Trebuchet MS, sans-serif",
     marginTop: 30,
   },
 

@@ -84,7 +84,6 @@ export function AppRoutes() {
               fontWeight: "bold",
               fontSize: 25,
               color: "#fff",
-              fontFamily: "Trebuchet MS, sans-serif",
             },
           }}
         >
