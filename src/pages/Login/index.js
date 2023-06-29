@@ -37,7 +37,7 @@ const Login = ({ navigation }) => {
       } else {
       }
     } catch (error) {
-      setError("Por favor, verifique as informações fornecidas!" + error);
+      setError("Por favor, verifique as informações fornecidas! " + error);
     }
   };
 
@@ -75,7 +75,7 @@ const Login = ({ navigation }) => {
         </Pressable>
       </View>
       <TouchableOpacity style={styles.button} onPress={() => handleLogin()}>
-        <Text>Login</Text>
+        <Text style={styles.txtLogin}>Login</Text>
       </TouchableOpacity>
       <Text style={styles.error}>{error}</Text>
     </View>
@@ -85,7 +85,7 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#AE8BF4",
+    backgroundColor: "#87CEFA",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -96,28 +96,31 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    color: "#54C7FF",
+    color: "black",
+    textShadow: "0.0em 0.0em 0.5em black",
     fontSize: 30,
     fontWeight: "bold",
     marginTop: 30,
   },
 
   input: {
+    marginTop: 20,
     height: 40,
     margin: 12,
     borderWidth: 1,
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 10,
     width: 200,
   },
 
   button: {
+    marginTop:20,
     alignItems: "center",
     backgroundColor: "white",
     padding: 10,
     justifyContent: "center",
-    width: 150,
-    borderRadius: 5,
+    width: 130,
+    borderRadius: 10,
     margin: 10,
   },
 
@@ -133,6 +136,10 @@ const styles = StyleSheet.create({
 
   styleLoader: {
     alignItems: "bottom",
+  },
+
+  txtLogin: {
+    fontSize: 16,
   },
 });
 
