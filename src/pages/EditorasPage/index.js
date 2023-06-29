@@ -105,8 +105,8 @@ const styles = StyleSheet.create({
   categorie: {
     borderRadius: 5,
     padding: 30,
-    width: 130,
-    height: 130,
+    width: 150,
+    height: 150,
   },
 });
 

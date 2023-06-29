@@ -182,7 +182,10 @@ const styles = StyleSheet.create({
   },
 
   delTxt: {
+    fontWeight: 'bold',
     fontSize: 15,
+    width: 170,
+    textAlign:'center',
   },
 
   trashButton: { backgroundColor: "#7ca4bc", padding: 5, borderRadius: 10 },

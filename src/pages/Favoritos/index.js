@@ -143,6 +143,7 @@ const styles = StyleSheet.create({
   },
 
   botao: {
+    marginTop: 10,
     backgroundColor: "#7ca4bc",
     padding: 5,
     borderRadius: 10,

@@ -99,7 +99,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Text style={styles.editorasTitle}>Editoras:</Text>
+        <Text style={styles.editorasTitle}>Editoras</Text>
 
         {getContent()}
         <FlatList
@@ -111,7 +111,7 @@ const Home = () => {
           keyExtractor={(item) => item.codigoEditora}
         />
 
-        <Text style={styles.editorasTitle}>Livros:</Text>
+        <Text style={styles.editorasTitle}>Livros</Text>
         {getContent()}
         <FlatList
           style={styles.flatList}
@@ -122,11 +122,11 @@ const Home = () => {
           keyExtractor={(item) => item.codigoLivro}
         />
         <View style={styles.destaqueContainer}>
-          <Text style={styles.editorasTitle}>Destaques:</Text>
+          <Text style={styles.dastaqueTitle}>Destaques</Text>
           <Image
             style={styles.destaques}
             source={{
-              uri: "https://images-ext-1.discordapp.net/external/SMOAVlLYTt0ndY5RPQKeppT-eOuJFk20OoFPVdrBaIQ/%3Fv%3D1615497113/https/cdn.shopify.com/s/files/1/2450/2191/products/81m5xSeW7YL_809x700.jpg",
+              uri: "https://m.media-amazon.com/images/I/81p6nHmmNaL.jpg",
             }}
           />
           <Text style={styles.destaque}>Box Completo Trono de vidro!</Text>
@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
   },
 
   flatList: {
+    marginTop: 8,
     flexGrow: 0,
   },
 
@@ -158,8 +159,13 @@ const styles = StyleSheet.create({
   editorasTitle: {
     fontWeight: "bold",
     fontSize: 20,
-    marginTop: 5,
+    marginTop: 15,
     marginLeft: 10,
+    textAlign: 'center',
+    backgroundColor: 'white',
+    borderRadius:15,
+    marginRight: 10,
+    height:30,
   },
 
   categorie: {
@@ -196,13 +202,28 @@ const styles = StyleSheet.create({
   },
 
   destaques: {
+    marginTop: 15,
     height: 260,
     width: 300,
+    borderRadius: 10,
   },
 
   destaque: {
     fontSize: 24,
   },
+
+  dastaqueTitle:{
+    fontWeight: "bold",
+    fontSize: 20,
+    marginTop: 10,
+    marginLeft: 10,
+    textAlign: 'center',
+    backgroundColor: 'white',
+    borderRadius:15,
+    marginRight: 10,
+    width: 370,
+    height:30,
+  }
 });
 
 export default Home;
