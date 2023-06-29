@@ -16,21 +16,6 @@ async function save(key, value) {
   }
 }
 
-async function deleteItem(key, value) {
-  try {
-    let storedValue = await getValueFor(key);
-    let existingData = storedValue ? JSON.parse(storedValue) : [];
-
-    let newData = existingData.filter((item) => item !== value);
-    await SecureStore.setItemAsync(key, JSON.stringify(newData));
-  } catch (error) {
-    console.log("Error deleting item: " + error);
-  }
-  let itemCount = await getItemCount(key);
-  console.log("Number of items in SecureStore:", itemCount);
-  return itemCount;
-}
-
 async function addItem(key, value) {
   try {
     let storedValue = await getValueFor(key);
@@ -51,15 +36,19 @@ async function addItem(key, value) {
   return itemCount;
 }
 
-async function getItemCount(key) {
+async function deleteItem(key, value) {
   try {
-    let updatedValue = await getValueFor(key);
-    let updatedData = updatedValue ? JSON.parse(updatedValue) : [];
-    return updatedData.length;
+    let storedValue = await getValueFor(key);
+    let existingData = storedValue ? JSON.parse(storedValue) : [];
+
+    let newData = existingData.filter((item) => item !== value);
+    await SecureStore.setItemAsync(key, JSON.stringify(newData));
   } catch (error) {
-    console.log("Error getting item count: " + error);
-    return "0";
+    console.log("Error deleting item: " + error);
   }
+  let itemCount = await getItemCount(key);
+  console.log("Number of items in SecureStore:", itemCount);
+  return itemCount;
 }
 
 async function getValueFor(key) {
@@ -72,6 +61,17 @@ async function getValueFor(key) {
   }
 
   return result;
+}
+
+async function getItemCount(key) {
+  try {
+    let updatedValue = await getValueFor(key);
+    let updatedData = updatedValue ? JSON.parse(updatedValue) : [];
+    return updatedData.length;
+  } catch (error) {
+    console.log("Error getting item count: " + error);
+    return "0";
+  }
 }
 
 const delLivro = async (key) => {

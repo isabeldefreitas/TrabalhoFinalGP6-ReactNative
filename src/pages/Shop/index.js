@@ -59,6 +59,11 @@ const ShopCart = () => {
     getTodosLivros();
   };
 
+  const deleteTodosLivros = async (key) => {
+    await delLivro(key);
+    getTodosLivros();
+  };
+
   return (
     <View style={styles.container}>
       {dadosLivro.length === 0 ? (
@@ -93,11 +98,12 @@ const ShopCart = () => {
             )}
           />
           <TouchableOpacity
+            style={styles.finalizarCompra}
             onPress={() => {
-              delLivro("livrosBuy");
+              deleteTodosLivros("livrosBuy");
             }}
           >
-            <Text>DELETAR TUDO</Text>
+            <Text>Finalizar Compra</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -155,6 +161,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#614e41",
     padding: 10,
     borderRadius: 10,
+  },
+
+  finalizarCompra: {
+    backgroundColor: "#642402",
+    padding: 25,
+    marginBottom: 10,
+    marginTop: 10,
+    borderRadius: 5,
   },
 });
 
