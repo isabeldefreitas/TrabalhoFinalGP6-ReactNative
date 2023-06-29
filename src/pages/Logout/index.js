@@ -31,7 +31,7 @@ const Logout = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4d2624",
+    backgroundColor: "#AE8BF4",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
   },
 
   titleStyle: {
-    color: "#794a33",
     fontSize: 20,
   },
 
@@ -51,14 +50,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#161212",
     padding: 10,
-    width: 150,
+    width: 120,
     borderRadius: 5,
     marginTop: 20,
   },
 
   text: {
     fontWeight: "bold",
-    color: "#794a33",
+    color: "white",
   },
 });
 

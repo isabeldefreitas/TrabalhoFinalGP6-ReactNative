@@ -82,7 +82,7 @@ const Editoras = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4d2624",
+    backgroundColor: "#AE8BF4",
   },
 
   loading: {

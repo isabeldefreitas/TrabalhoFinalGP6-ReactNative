@@ -78,11 +78,13 @@ export function AppRoutes() {
         <Stack.Navigator
           screenOptions={{
             headerStyle: {
-              backgroundColor: "#fa5b04",
+              backgroundColor: "#54C7FF",
             },
             headerTitleStyle: {
               fontWeight: "bold",
               fontSize: 25,
+              color: "#fff",
+              fontFamily: "Trebuchet MS, sans-serif",
             },
           }}
         >

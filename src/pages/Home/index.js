@@ -140,7 +140,7 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4d2624",
+    backgroundColor: "#AE8BF4",
   },
 
   loading: {
@@ -160,7 +160,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     marginTop: 5,
-    color: "#794a33",
     marginLeft: 10,
   },
 
@@ -174,7 +173,7 @@ const styles = StyleSheet.create({
   bookContainer: {
     height: 305,
     width: 225,
-    backgroundColor: "#161212",
+    backgroundColor: "white",
     alignItems: "center",
     borderRadius: 10,
   },

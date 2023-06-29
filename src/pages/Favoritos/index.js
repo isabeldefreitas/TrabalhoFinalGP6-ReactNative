@@ -103,7 +103,7 @@ const Favorites = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "pink",
+    backgroundColor: "#AE8BF4",
     alignItems: "center",
   },
 

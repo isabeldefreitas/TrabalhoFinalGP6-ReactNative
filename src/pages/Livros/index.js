@@ -64,7 +64,7 @@ const SelectedLivro = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4d2624",
+    backgroundColor: "#AE8BF4",
   },
 
   bookContainer: {
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   },
 
   botao: {
-    backgroundColor: "#161212",
+    backgroundColor: "white",
     padding: 10,
     borderRadius: 10,
   },
