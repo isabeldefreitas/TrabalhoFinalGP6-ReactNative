@@ -1,15 +1,15 @@
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useContext, useState } from "react";
 import {
+  Image,
+  Pressable,
+  StatusBar,
   StyleSheet,
   Text,
-  View,
   TextInput,
-  StatusBar,
-  Pressable,
-  Image,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { TouchableOpacity } from "react-native";
-import { useState, useContext } from "react";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AxiosInstance from "../../api/AxiosInstance";
 import { DataContext } from "../../context/DataContext";
 import { useTogglePasswordVisibility } from "../../hook/useTogglePasswordVisibility";
@@ -97,7 +97,6 @@ const styles = StyleSheet.create({
 
   title: {
     color: "black",
-    textShadow: "0.0em 0.0em 0.5em black",
     fontSize: 30,
     fontWeight: "bold",
     marginTop: 30,
@@ -114,7 +113,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    marginTop:20,
+    marginTop: 20,
     alignItems: "center",
     backgroundColor: "white",
     padding: 10,

@@ -1,15 +1,15 @@
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useContext } from "react";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import AxiosInstance from "../../api/AxiosInstance";
 import { DataContext } from "../../context/DataContext";
-import { useContext } from "react";
 
 const SelectedEditora = ({ route }) => {
   const navigation = useNavigation();
@@ -43,9 +43,12 @@ const SelectedEditora = ({ route }) => {
     <View style={styles.container}>
       <ScrollView>
         <View style={styles.bookContainer}>
-          <Text style={styles.tituloEditora}>
-            {`${route.params.selectedEditoraObj.nomeEditora}`}
-          </Text>
+          <Image
+            style={styles.categorie}
+            source={{
+              uri: `data:image/png;base64,${route.params.selectedEditoraObj.img}`,
+            }}
+          />
           {selectedEditoraLivroData.map((livro) => (
             <TouchableOpacity
               key={livro.codigoLivro}
@@ -72,18 +75,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#87CEEB",
   },
 
-  tituloEditora: {
-    fontWeight: "bold",
-    fontStyle: "italic",
-    fontSize: 20,
-    padding: 20,
+  categorie: {
+    borderRadius: 5,
+    marginTop: 15,
+    padding: 30,
+    width: 90,
+    height: 90,
   },
 
   cardBook: {
     margin: 10,
     alignItems: "center",
     backgroundColor: "white",
-    height: 325,
+    height: 310,
     width: 200,
     borderRadius: 10,
   },

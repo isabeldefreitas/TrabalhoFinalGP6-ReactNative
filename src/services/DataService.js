@@ -67,7 +67,11 @@ async function getValueFor(key) {
 async function getItemCount(key) {
   try {
     let updatedValue = await getValueFor(key);
-    let updatedData = updatedValue ? JSON.parse(updatedValue) : [];
+    let updatedData =
+      updatedValue !== null && updatedValue !== undefined
+        ? JSON.parse(updatedValue)
+        : [];
+    console.log(updatedData.length);
     return updatedData.length;
   } catch (error) {
     console.log("Error getting item count: " + error);

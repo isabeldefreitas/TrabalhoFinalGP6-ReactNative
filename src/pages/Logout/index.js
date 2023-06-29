@@ -1,7 +1,7 @@
-import { DataContext } from "../../context/DataContext";
-import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
-import { useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { useContext } from "react";
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { DataContext } from "../../context/DataContext";
 
 const Logout = () => {
   const { setDadosUsuario } = useContext(DataContext);
@@ -12,16 +12,20 @@ const Logout = () => {
 
     navigation.navigate("Login");
   };
+
+  const pressAlert = () => {
+    Alert.alert("Deslogar", "Você realmente quer sair? :(", [
+      { text: "Sim", onPress: () => handleLogOut() },
+      { text: "Não", onPress: () => {} },
+    ]);
+  };
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.titleStyle}>Deseja sair?</Text>
+        <Text style={styles.titleStyle}>Já vai embora? 😢</Text>
 
-        <TouchableOpacity
-          style={styles.yesStyle}
-          onPress={() => handleLogOut()}
-        >
-          <Text style={styles.text}>Sim</Text>
+        <TouchableOpacity style={styles.yesStyle} onPress={() => pressAlert()}>
+          <Text style={styles.text}>Deslogar</Text>
         </TouchableOpacity>
       </View>
     </>
