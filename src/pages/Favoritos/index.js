@@ -110,7 +110,9 @@ const styles = StyleSheet.create({
 
   none: {
     marginTop: 25,
-    fontSize: 65,
+    fontSize: 50,
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   realContainer: {
@@ -130,7 +132,7 @@ const styles = StyleSheet.create({
     gap: 5,
     width: 220,
     borderRadius: 10,
-    height: 320,
+    height: 330,
   },
 
   livroTitle: {
@@ -141,11 +143,8 @@ const styles = StyleSheet.create({
   },
 
   botao: {
-    alignItems: "center",
-    backgroundColor: "white",
-    padding: 10,
-    justifyContent: "center",
-    width: 130,
+    backgroundColor: "#7ca4bc",
+    padding: 5,
     borderRadius: 10,
   },
 
