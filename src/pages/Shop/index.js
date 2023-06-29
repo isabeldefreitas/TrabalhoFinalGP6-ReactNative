@@ -62,10 +62,10 @@ const ShopCart = () => {
   return (
     <View style={styles.container}>
       {dadosLivro.length === 0 ? (
-        <Text>Nenhum item Adicionado ao carrinho</Text>
+        <Text style={styles.none}>Nenhum item Adicionado ao carrinho</Text>
       ) : (
         <View style={styles.realContainer}>
-          <Text style={styles.title}>Carrinho:</Text>
+          <Text style={styles.title}>Carrinho</Text>
           {getContent()}
           <FlatList
             data={dadosLivro}
@@ -81,7 +81,7 @@ const ShopCart = () => {
                     source={{ uri: `data:image/png;base64,${item.img}` }}
                   />
                   <TouchableOpacity
-                    style={styles.botao}
+                    style={styles.trashButton}
                     onPress={() => {
                       deleteLivro("livrosBuy", item.codigoLivro);
                     }}
@@ -93,11 +93,10 @@ const ShopCart = () => {
             )}
           />
           <TouchableOpacity
-            onPress={() => {
-              delLivro("livrosBuy");
-            }}
+            style={styles.button}
+            onPress={() => {delLivro("livrosBuy");}}
           >
-            <Text>DELETAR TUDO</Text>
+            <Text style={styles.delTxt}>Deletar Tudo</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -108,8 +107,12 @@ const ShopCart = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#AE8BF4",
+    backgroundColor: "#87CEEB",
     alignItems: "center",
+  },
+
+  none:{
+    marginTop:25,
   },
 
   realContainer: {
@@ -123,18 +126,20 @@ const styles = StyleSheet.create({
   },
 
   flatListUni: {
-    backgroundColor: "#161212",
+    backgroundColor: "white",
     alignItems: "center",
     margin: 5,
     gap: 5,
     width: 220,
     borderRadius: 10,
+    height: 320,
   },
 
   livroTitle: {
     fontWeight: "bold",
     marginTop: 10,
     marginBottom: 5,
+    fontSize: 15,
   },
 
   title: {
@@ -142,19 +147,32 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontWeight: "bold",
     fontSize: 30,
-    color: "#794a33",
+    color: "black",
   },
 
   livroImagem: {
-    width: 130,
-    height: 200,
+    width: 150,
+    height: 220,
+    borderColor: 'black',
   },
 
-  botao: {
-    marginBottom: 10,
-    backgroundColor: "#614e41",
+  button: {
+    marginTop:20,
+    alignItems: "center",
+    backgroundColor: "white",
     padding: 10,
+    justifyContent: "center",
+    width: 130,
     borderRadius: 10,
+    margin: 10,
+  },
+
+  delTxt:{
+    fontSize: 15,
+  },
+
+  trashButton:{
+    marginTop:10
   },
 });
 
