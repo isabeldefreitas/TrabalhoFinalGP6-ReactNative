@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
 
-    backgroundColor: "#4d2624",
+    backgroundColor: "#AE8BF4",
   },
 
   tituloEditora: {
@@ -78,13 +78,12 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     fontSize: 20,
     padding: 20,
-    color: "#794a33",
   },
 
   cardBook: {
     margin: 10,
     alignItems: "center",
-    backgroundColor: "#161212",
+    backgroundColor: "white",
     height: 325,
     width: 200,
     borderRadius: 10,

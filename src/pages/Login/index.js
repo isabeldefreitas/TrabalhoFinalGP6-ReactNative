@@ -47,11 +47,11 @@ const Login = ({ navigation }) => {
       <Image
         style={styles.logo}
         source={{
-          uri: "https://media.discordapp.net/attachments/1081311975247716473/1123705326433218670/image.png?width=671&height=671",
+          uri: "https://media.discordapp.net/attachments/1081311951914815549/1123737377333071985/Colorful__3_-removebg-preview.png?width=620&height=286",
         }}
       />
 
-      <Text style={styles.title}>Bem-Vinde</Text>
+      <Text style={styles.title}>Seja Bem-Vinde!</Text>
       <TextInput
         style={styles.input}
         placeholder="Usuário"
@@ -85,20 +85,23 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#4d2624",
+    backgroundColor: "#AE8BF4",
     alignItems: "center",
     justifyContent: "center",
   },
 
   logo: {
-    width: 250,
-    height: 250,
+    width: 300,
+    height: 100,
   },
 
   title: {
-    color: "#794a33",
-    fontSize: 25,
+    color: "#54C7FF",
+    textShadow: "0.0em 0.0em 0.1em black",
+    fontSize: 30,
     fontWeight: "bold",
+    fontFamily: "Trebuchet MS, sans-serif",
+    marginTop: 30,
   },
 
   input: {
