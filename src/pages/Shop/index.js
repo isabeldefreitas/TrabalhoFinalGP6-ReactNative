@@ -19,11 +19,13 @@ import {
   deleteItem,
 } from "../../services/DataService";
 import { Loader } from "../Loader";
+import { DataFav } from "../../context/DataFav";
 
 const ShopCart = () => {
   const { dadosUsuario } = useContext(DataContext);
   const [dadosLivro, setDadosLivro] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { valor } = useContext(DataFav);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -57,21 +59,23 @@ const ShopCart = () => {
   const deleteLivro = async (key, value) => {
     await deleteItem(key, value);
     getTodosLivros();
+    valor();
   };
 
   const deleteTodosLivros = async (key) => {
     await delLivro(key);
     getTodosLivros();
+    valor();
   };
 
   return (
     <View style={styles.container}>
       {dadosLivro.length === 0 ? (
-        <Text style={styles.none}>Nenhum item Adicionado ao carrinho</Text>
+        <Text style={styles.none}>Nenhum item Adicionado ao carrinho 🥺</Text>
       ) : (
         <View style={styles.realContainer}>
-          <Text style={styles.title}>Carrinho</Text>
           {getContent()}
+          <Text style={styles.title}>Carrinho</Text>
           <FlatList
             data={dadosLivro}
             keyExtractor={(item) => item.codigoLivro}
@@ -99,9 +103,11 @@ const ShopCart = () => {
           />
           <TouchableOpacity
             style={styles.button}
-            onPress={() => {delLivro("livrosBuy");}}
+            onPress={() => {
+              deleteTodosLivros("livrosBuy");
+            }}
           >
-            <Text style={styles.delTxt}>Deletar Tudo</Text>
+            <Text style={styles.delTxt}>Finalizar Compra</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -116,8 +122,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  none:{
-    marginTop:25,
+  none: {
+    marginTop: 25,
+    fontSize: 70,
   },
 
   realContainer: {
@@ -158,11 +165,11 @@ const styles = StyleSheet.create({
   livroImagem: {
     width: 150,
     height: 220,
-    borderColor: 'black',
+    borderColor: "black",
   },
 
   button: {
-    marginTop:20,
+    marginTop: 20,
     alignItems: "center",
     backgroundColor: "white",
     padding: 10,
@@ -172,12 +179,12 @@ const styles = StyleSheet.create({
     margin: 10,
   },
 
-  delTxt:{
+  delTxt: {
     fontSize: 15,
   },
 
-  trashButton:{
-    marginTop:10
+  trashButton: {
+    marginTop: 10,
   },
 
   finalizarCompra: {

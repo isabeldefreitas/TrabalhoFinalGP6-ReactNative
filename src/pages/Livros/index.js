@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { save, addItem } from "../../services/DataService";
-import { Feather } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Feather, MaterialIcons } from "@expo/vector-icons";
+import { addItem, getItemCount } from "../../services/DataService";
+import { useContext } from "react";
 
 import {
   Image,
@@ -10,18 +9,21 @@ import {
   Text,
   TouchableOpacity,
   View,
-  TouchableHighlight,
 } from "react-native";
+import { DataFav } from "../../context/DataFav";
 
 const SelectedLivro = ({ route }) => {
+  const { valor, valorFav } = useContext(DataFav);
   const selectedLivroData = route.params;
 
   const saveLivro = async (key, value) => {
     await addItem(key, value);
+    valorFav();
   };
 
   const saveLivroBuy = async (key, value) => {
     await addItem(key, value);
+    valor();
   };
 
   return (

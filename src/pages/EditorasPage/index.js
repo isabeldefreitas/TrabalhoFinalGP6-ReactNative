@@ -1,16 +1,15 @@
-import {
-  TouchableOpacity,
-  Image,
-  FlatList,
-  StyleSheet,
-  View,
-  ActivityIndicator,
-  ScrollView,
-} from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { DataContext } from "../../context/DataContext";
 import { useState } from "react";
+import {
+  ActivityIndicator,
+  FlatList,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import AxiosInstance from "../../api/AxiosInstance";
+import { DataContext } from "../../context/DataContext";
 
 import { useContext, useEffect } from "react";
 

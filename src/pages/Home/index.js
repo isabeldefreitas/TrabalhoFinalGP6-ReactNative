@@ -1,17 +1,16 @@
-import { ScrollView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { useContext, useEffect, useState } from "react";
 import {
   FlatList,
   Image,
+  ScrollView,
   StyleSheet,
   Text,
-  View,
   TouchableOpacity,
-  ActivityIndicator,
+  View,
 } from "react-native";
 import AxiosInstance from "../../api/AxiosInstance";
 import { DataContext } from "../../context/DataContext";
-import { useContext, useState, useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
 import { Loader } from "../Loader";
 
 const Home = () => {
