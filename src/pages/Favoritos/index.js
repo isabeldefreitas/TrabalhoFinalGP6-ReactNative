@@ -45,8 +45,8 @@ const Favorites = () => {
       });
       livrosFev.push(resultado.data);
     }
-    setIsLoading(false);
 
+    setIsLoading(false);
     setDadosLivro(livrosFev);
   };
 
@@ -64,8 +64,8 @@ const Favorites = () => {
         </Text>
       ) : (
         <View style={styles.realContainer}>
-          <Text style={styles.title}>Favoritos:</Text>
           {getContent()}
+          <Text style={styles.title}>Favoritos:</Text>
           <FlatList
             data={dadosLivro}
             keyExtractor={(item) => item.codigoLivro}
@@ -132,17 +132,18 @@ const styles = StyleSheet.create({
     gap: 5,
     width: 220,
     borderRadius: 10,
-    height: 330,
+    height: 335,
   },
 
   livroTitle: {
     fontWeight: "bold",
     marginTop: 10,
     marginBottom: 5,
-    fontSize: 15,
+    fontSize: 18,
   },
 
   botao: {
+    marginTop: 3,
     backgroundColor: "#7ca4bc",
     padding: 5,
     borderRadius: 10,

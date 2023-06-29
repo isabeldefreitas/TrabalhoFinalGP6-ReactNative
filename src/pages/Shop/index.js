@@ -95,7 +95,7 @@ const ShopCart = () => {
                       deleteLivro("livrosBuy", item.codigoLivro);
                     }}
                   >
-                    <EvilIcons name="trash" size={30} color="black" />
+                    <EvilIcons name="trash" size={35} color="black" />
                   </TouchableOpacity>
                 </View>
               </View>
@@ -146,14 +146,14 @@ const styles = StyleSheet.create({
     gap: 5,
     width: 220,
     borderRadius: 10,
-    height: 320,
+    height: 335,
   },
 
   livroTitle: {
     fontWeight: "bold",
     marginTop: 10,
     marginBottom: 5,
-    fontSize: 15,
+    fontSize: 18,
   },
 
   title: {
@@ -185,7 +185,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 
-  trashButton: { backgroundColor: "#7ca4bc", padding: 5, borderRadius: 10 },
+  trashButton: {
+    marginTop: 3,
+    backgroundColor: "#7ca4bc",
+    padding: 5,
+    borderRadius: 10,
+  },
 
   finalizarCompra: {
     backgroundColor: "#642402",

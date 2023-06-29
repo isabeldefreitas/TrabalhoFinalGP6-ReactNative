@@ -12,6 +12,8 @@ import {
 import AxiosInstance from "../../api/AxiosInstance";
 import { DataContext } from "../../context/DataContext";
 import { Loader } from "../Loader";
+import { Entypo } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 const Home = () => {
   const { dadosUsuario } = useContext(DataContext);
@@ -99,7 +101,10 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Text style={styles.editorasTitle}>Editoras:</Text>
+        <View style={styles.editorasTitleContainer}>
+          <Entypo name="book" size={24} color="black" />
+          <Text style={styles.editorasTitle}>Editoras</Text>
+        </View>
 
         {getContent()}
         <FlatList
@@ -110,8 +115,10 @@ const Home = () => {
           renderItem={({ item }) => <Editora item={item} />}
           keyExtractor={(item) => item.codigoEditora}
         />
-
-        <Text style={styles.editorasTitle}>Livros:</Text>
+        <View style={styles.editorasTitleContainer}>
+          <Entypo name="open-book" size={24} color="black" />
+          <Text style={styles.editorasTitle}>Livros</Text>
+        </View>
         {getContent()}
         <FlatList
           style={styles.flatList}
@@ -121,12 +128,15 @@ const Home = () => {
           renderItem={({ item }) => <Livro item={item} />}
           keyExtractor={(item) => item.codigoLivro}
         />
+        <View style={styles.editorasTitleContainer}>
+          <Feather name="trending-up" size={24} color="black" />
+          <Text style={styles.editorasTitle}>Destaques</Text>
+        </View>
         <View style={styles.destaqueContainer}>
-          <Text style={styles.editorasTitle}>Destaques:</Text>
           <Image
             style={styles.destaques}
             source={{
-              uri: "https://images-ext-1.discordapp.net/external/SMOAVlLYTt0ndY5RPQKeppT-eOuJFk20OoFPVdrBaIQ/%3Fv%3D1615497113/https/cdn.shopify.com/s/files/1/2450/2191/products/81m5xSeW7YL_809x700.jpg",
+              uri: "https://images-ext-1.discordapp.net/external/GxtLXpqFfxNj-KWMGkTMJx1pP_NBb5s8LAJXFzu3uXk/https/m.media-amazon.com/images/I/81p6nHmmNaL.jpg?width=849&height=671",
             }}
           />
           <Text style={styles.destaque}>Box Completo Trono de vidro!</Text>
@@ -160,6 +170,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 5,
     marginLeft: 10,
+    marginBottom: 7,
+  },
+
+  editorasTitleContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft: 10,
+    marginTop: 5,
+    borderBottomWidth: 1,
+    width: 370,
   },
 
   categorie: {
@@ -190,14 +210,15 @@ const styles = StyleSheet.create({
 
   destaqueContainer: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
     marginBottom: 10,
+    alignItems: "center",
+    margin: 10,
   },
 
   destaques: {
     height: 260,
     width: 300,
+    borderRadius: 15,
   },
 
   destaque: {

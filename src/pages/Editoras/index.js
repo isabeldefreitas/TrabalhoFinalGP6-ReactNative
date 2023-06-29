@@ -79,8 +79,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 15,
     padding: 30,
-    width: 90,
-    height: 90,
+    width: 100,
+    height: 100,
   },
 
   cardBook: {
