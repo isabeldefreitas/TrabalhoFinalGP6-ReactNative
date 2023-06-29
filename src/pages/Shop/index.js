@@ -124,7 +124,9 @@ const styles = StyleSheet.create({
 
   none: {
     marginTop: 25,
-    fontSize: 70,
+    fontSize: 50,
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   realContainer: {
@@ -183,9 +185,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 
-  trashButton: {
-    marginTop: 10,
-  },
+  trashButton: { backgroundColor: "#7ca4bc", padding: 5, borderRadius: 10 },
 
   finalizarCompra: {
     backgroundColor: "#642402",
