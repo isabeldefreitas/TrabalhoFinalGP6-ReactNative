@@ -37,7 +37,7 @@ const Login = ({ navigation }) => {
       } else {
       }
     } catch (error) {
-      setError("Por favor, verifique as informações fornecidas! " + error);
+      setError("Por favor, verifique as informações fornecidas!");
     }
   };
 
